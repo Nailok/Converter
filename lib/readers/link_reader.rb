@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
+require 'open-uri'
+
 module Link_reader
   def self.read(url)
-    data = Nokogiri::XML(open(url))
+    open(url).read
   end
 end
