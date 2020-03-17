@@ -2,4 +2,5 @@
 *.txt
 *.swp
 *.yml
-old_parsers/
+*.atom
+*.rss
