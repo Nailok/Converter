@@ -11,7 +11,8 @@ class OptionParser
 
       parser.on('-o', '--output=FORMAT',
                 'Choose one of the formats: json, atom, rss')
-
+      parser.on('-n', '--name=FILE', 
+                'Type converted file name')
       parser.on('-h', '--help', 'Prints this help') do
         exit
       end
