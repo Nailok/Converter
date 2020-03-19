@@ -6,7 +6,7 @@ require 'nokogiri'
 module AtomParser
   def self.can_parse?(doc)
     doc = Nokogiri::XML(doc)
-    doc.remove_namespaces! 
+    doc.remove_namespaces!
     return true if doc.xpath('boolean(//entry)')
 
     false
@@ -27,7 +27,7 @@ module AtomParser
     doc.css('entry').each do |item|
       entry_title = item.css('title').text.strip
       entry_summary = item.css('summary').text.strip
-      entry_pubdate = item.css('published').text.strip 
+      entry_pubdate = item.css('published').text.strip
       items.push(
         title: entry_title,
         description: entry_summary,
@@ -39,10 +39,10 @@ module AtomParser
 
   def self.parse(doc)
     doc = Nokogiri::XML(doc)
-    doc.remove_namespaces! 
-    
+    doc.remove_namespaces!
+
     result = {
-      feed: parse_feed(doc),
+      # feed: parse_feed(doc),
       entry: parse_entry(doc)
     }
   end

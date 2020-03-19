@@ -6,7 +6,7 @@ require 'nokogiri'
 module ConvertToAtom
   def self.convert(data)
     builder = Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
-      xml.rss('version' => '2.0', 'xmlns:atom' => 'http://www.w3.org/2005/Atom') do
+      xml.atom('version' => '2.0', 'xmlns:atom' => 'http://www.w3.org/2005/Atom') do
         data.values[0].each do |v|
           xml.entry do
             xml.title v[:title]

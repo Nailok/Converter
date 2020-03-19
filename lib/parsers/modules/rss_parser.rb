@@ -3,7 +3,7 @@
 require 'nokogiri'
 
 # Parse rss format
-module RssParser 
+module RssParser
   def self.can_parse?(doc)
     doc = Nokogiri::XML(doc)
     doc.remove_namespaces!
@@ -23,7 +23,7 @@ module RssParser
 
   def self.parse_items(doc)
     items = []
-    
+
     doc.css('item').each do |item|
       item_title = item.css('title').text.strip
       item_description = item.css('description').text.strip
@@ -33,14 +33,14 @@ module RssParser
         description: item_description,
         pubDate: item_pubdate
       )
-
     end
     items
   end
 
   def self.parse(doc)
     doc = Nokogiri::XML(doc)
-    result = { feed: parse_feed(doc),
-               items: parse_items(doc) }
+    result = { # feed: parse_feed(doc),
+      items: parse_items(doc)
+    }
   end
 end
